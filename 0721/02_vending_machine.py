@@ -19,11 +19,12 @@ while True:
     money = int(input('금액을 넣어주세요.(그만 넣으시려면 0을 입력하세요.) : '))
 
     # 여기부터 코드를 작성하세요.
-    if money != 0:
-        print(f'현재 누적 금액은 {budget}원입니다.\n')
-        continue
-    elif money < 0:
+    if money < 0:
         print("금액은 1원 이상 넣어주세요.\n")
+        continue
+    elif money != 0:
+        budget += money
+        print(f'현재 누적 금액은 {budget}원입니다.\n')
         continue
     else:
         if budget < min(costs):
@@ -31,15 +32,24 @@ while True:
             break
         else:
             print(f'{budget}원으로 구매 가능한 메뉴는 다음과 같습니다.')
-            
-        
+            menu_num = list()
+            for i in range(len(menus)):
+                if costs[i] <= budget:
+                    print('{}. {} {}원'.format(i+1, menus[i], costs[i]))
+                    menu_num.append(i+1)
+
         right_menu = True
         while right_menu:
-            num = int(input('구매하실 메뉴의 번호를 입력하세요'))
-            if num < 1 or num > len(total):
-                print('구매할 수 없는 메뉴입니다.')
+            num = int(input('구매하실 메뉴의 번호를 입력하세요. :'))
+            if num not in menu_num:
+                print('구매할 수 없는 메뉴입니다.\n')
                 continue
-            else:
-                
+            else: 
+                print('{}를 구매하셨습니다.'.format(menus[num-1]))
+                print('거스름돈은 {}원입니다. 감사합니다.\n'.format(budget-costs[num-1]))
+                right_menu = False
+        
+        if not right_menu:
+            break
 
 
