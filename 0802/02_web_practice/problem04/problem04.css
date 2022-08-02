@@ -1,0 +1,81 @@
+/* 여기에 코드를 작성합니다. */
+.chessboard {
+  width: 800px;
+  height: 800px;
+  border: 2px black solid;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+}
+
+.back-white {
+  background-color: white;
+}
+
+.back-black {
+  background-color: black;
+}
+
+.next1 {
+  position: relative;
+  bottom: 800px;
+  left: 100px;
+}
+
+.next2 {
+  position: relative;
+  bottom: 1600px;
+  left: 200px;
+}
+
+.next3 {
+  position: relative;
+  bottom: 2400px;
+  left: 300px;
+}
+
+.next4 {
+  position: relative;
+  bottom: 3200px;
+  left: 400px;
+}
+
+.next5 {
+  position: relative;
+  bottom: 4000px;
+  left: 500px;
+}
+
+.next6 {
+  position: relative;
+  bottom: 4800px;
+  left: 600px;
+}
+
+.next7 {
+  position: relative;
+  bottom: 5600px;
+  left: 700px;
+}
+.pawn {
+  background-image: url("chess_img/black_pawn.png");
+  background-size: cover;
+}
+
+.king {
+  background-image: url("chess_img/white_king.png");
+  background-size: cover;
+}
+
+.queen {
+  background-image: url("chess_img/white_queen.png");
+  background-size: cover;
+}
+
+.rook {
+  background-image: url("chess_img/white_rook.png");
+  background-size: cover;
+}
+/* 모든 스타일은 반드시 클래스 선택자를 이용해 정의합니다. 이후 HTML 태그에 해당 클래스를 적용합니다. */
