@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda+One&family=Nunito:wght@200;300;400;500;600&display=swap');
+
+/* 스크롤을 부드럽게 설정합니다. */
+html{
+  scroll-behavior: smooth;
+}
+
+/* 기본 글꼴 설정 */
+body {
+  font-family: 'Nunito', sans-serif;
+  /* 창 크기가 줄어도 최소 1280px의 너비를 유지합니다. 
+  디바이스의 화면 크기가 더 작다면 스크롤이 생성됩니다. */
+  min-width: 1280px;
+  color: #333333;
+}
+
+.header-img {
+  width: 100%;
+}
+
+.apparlel-img {
+  width: 35%;
+  margin-left: 15%;
+}
+
+.box {
+  width: 50%;
+  height: 40%;
+  border: solid black 1px;
+}
+
+.input {
+  width: 130%;
+}
+
+.arrow {
+  position: fixed;
+  right: 5px;
+  bottom: 5px;
+}
+
+.a {
+  width: 100%;
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.form-style {
+  width: 35%;
+  margin-left: 10%;
+  margin-top: 5%;
+}
+
+.each-form {
+  width: 80%;
+}
+
+.contact-img {
+  width: 35%;
+  margin-right: 15%;
+}
+
+.more-img {
+  width: 35%;
+}
+
+.article {
+  width: 80%;
+  
+}
