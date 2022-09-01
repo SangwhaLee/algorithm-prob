@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load mathfilters %}
+
+{% block contentes %}
+  <h1>계산결과</h1>
+  <p>{{firstnum}} + {{secondnum}} = {{ firstnum|add:secondnum }}</p>
+  <p>{{firstnum}} * {{secondnum}} = {{ firstnum|mul:secondnum }}</p>
+  <p>{{firstnum}} - {{secondnum}} = {{ firstnum|sub:secondnum }}</p>
+  {% if secondnum = 0 %}
+    <p>계산할 수 없습니다</p>
+  {% else %}
+    <p>{{firstnum}} / {{secondnum}} = {{ firstnum|div:secondnum }}</p>
+  {% endif %}
+{% endblock contentes %}

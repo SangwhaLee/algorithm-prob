@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+{% for fruit in fruits  %}
+  {% if fruit in hates %}
+  {% else %}
+    {% if fruit|length > 1 %}
+      <p> {{fruit}} </p>
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% endblock contents %}
