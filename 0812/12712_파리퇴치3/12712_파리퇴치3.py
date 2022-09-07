@@ -37,7 +37,6 @@ for tc in range(T):
                 plus_style += arr[k][l + 1]
                 l += 1
                 m += 1
-
             k = i
             l = j
             m = 0
