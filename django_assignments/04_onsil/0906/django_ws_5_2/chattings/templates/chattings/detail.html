@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+    <h1>Detail</h1>
+    <h2>{{chatting.pk}}번째 글</h2>
+    <hr>
+    <p>사용자 : {{chatting.user}}</p>
+    <p>내용 : {{chatting.content}}</p>
+    <p>작성시각 : {{chatting.created_at}}</p>
+    <p>수정시각 : {{chatting.updated_at}}</p>
+    <a href="{% url 'chattings:index' %}">Back</a>
+    <form action="{% url 'chattings:delete' chatting.pk %}" method = "POST">
+        {% csrf_token %}
+        <input type="submit" value="삭제">
+    </form>
+{% endblock contents %}

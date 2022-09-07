@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+    <h1>Detail</h1>
+    <h3>{{movie.id}}번째 영화</h3>
+    <p>제목 : {{movie.title}}</p>
+    <p>감독 : {{movie.director}}</p>
+    <p>개요 : {{movie.content}}</p>
+    <a href="{% url 'movies:index' %}">Back</a>
+{% endblock contents %}
