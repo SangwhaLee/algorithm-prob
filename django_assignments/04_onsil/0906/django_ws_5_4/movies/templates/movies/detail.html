@@ -7,4 +7,9 @@
     <p>감독 : {{movie.director}}</p>
     <p>개요 : {{movie.content}}</p>
     <a href="{% url 'movies:index' %}">Back</a>
+    <a href="{% url 'movies:update' movie.pk %}">수정</a>
+    <form action="{% url 'movies:delete' movie.pk %}" method ='POST'>
+        {% csrf_token %}
+        <input type="submit" value="삭제">
+    </form>
 {% endblock contents %}
