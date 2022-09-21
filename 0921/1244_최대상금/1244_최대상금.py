@@ -4,29 +4,29 @@ sys.stdin = open('input.txt','r')
 
 def change_page(N, idx):
     global maximum
-    if N == 0:
-        total = 0
-        std = 10**(len(origin)-1)
-        for i in origin:
-            total += i*std
-            std //= 10
+    if N == num:
+        maximum = max(int(''.join(origin)), maximum)
+        return
 
-        if total > maximum:
-            maximum = total
+    for i in range(idx, len(origin)):
+        for j in range(i+1, len(origin)):
+            if origin[i] <= origin[j]:
+                origin[i], origin[j] = origin[j], origin[i]
+                change_page(N+1, i)
+                origin[i], origin[j] = origin[j], origin[i]
 
-
-    for i in range(idx, len(origin)-1):
-        for j in range(idx+1, len(origin)):
-            origin[i], origin[j] = origin[j], origin[i]
-            change_page(N-1, idx+1)
-            origin[i], origin[j] = origin[j], origin[i]
+    if not maximum and N < num:
+        rotate = (num-N) % 2
+        if rotate:
+            origin[-1], origin[-2] = origin[-2], origin[-1]
+        change_page(N+1, idx)
 
 
 for tc in range(1, int(input())+1):
-    origin, num = map(int, input().split())
+    origin, num = input().split()
     num = int(num)
-    origin = list(map(int,str(origin)))
+    origin = list(origin)
     maximum = 0
-    print(num, origin)
-    change_page(num, 0)
-    print(maximum)
+    # print(num, origin)
+    change_page(0, 0)
+    print("#{} {}".format(tc,maximum))
