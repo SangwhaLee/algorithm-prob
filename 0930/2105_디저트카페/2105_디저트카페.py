@@ -1,13 +1,13 @@
 import sys
 sys.stdin = open('sample_input.txt','r')
 
+# 방향의 순서는 정해져있다
 di = [1,1,-1,-1]
 dj = [1,-1,-1,1]
 
 
 def dessert_cafe(si,sj,direction, total):
     global max_types, startpoint
-    # 시작점으로 돌아오면 그만
 
     if direction != 3:
         now_direction = [direction, direction + 1]
@@ -18,10 +18,12 @@ def dessert_cafe(si,sj,direction, total):
         ni = si + di[d]
         nj = sj + dj[d]
 
+        # 진행의 결과가 시작점과 같게 되면 반복 그만
         if startpoint[0] == ni and startpoint[1] == nj:
             max_types = max(total, max_types)
             return
 
+        # 범위를 벗어나지 않는 선에서 진행
         if ni < 0 or ni >= N or nj < 0 or nj >= N:
             continue
         if board[ni][nj] not in types:
