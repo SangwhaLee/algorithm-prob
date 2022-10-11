@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+  <h1>EITHER GAME</h1>
+  <div>
+    <a href="{% url 'eithers:create' %}" class="btn btn-primary">NEW QUESTION</a>
+    <a href="{% url 'eithers:random' %}" class="btn btn-danger">RANDOM QUESTION</a>
+  </div>
+  <hr>
+  {% for question in questions %}
+    <h2> {{ question.title }}</h2>
+    <br>
+    <a href="{% url 'eithers:detail' question.pk %}" class="btn btn-warning">PLAY</a>
+    <hr>
+  {% endfor %}
+
+{% endblock contents %}

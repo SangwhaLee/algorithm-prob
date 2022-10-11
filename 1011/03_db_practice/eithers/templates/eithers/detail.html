@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+  <h1>DETAIL</h1>
+  <a href="{% url 'eithers:index' %}">BACK</a>
+  <hr>
+  <h1 class="text-center">{{ question.title }}</h1>
+  <br>
+  <div class="d-flex justify-content-between">
+    <span class="text-danger">{{ question.RED_TEAM }}</span>
+    <span class="text-primary">{{ question.BLUE_TEAM }}</span>
+  </div>
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: {{ per_a }}%" aria-valuenow="{{ per_a }}" aria-valuemin="0" aria-valuemax="100">{{ per_a }}%</div>
+    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {{ per_b }}%" aria-valuenow="{{ per_b }}" aria-valuemin="0" aria-valuemax="100">{{ per_b }}%</div>
+  </div>
+  <br>
+  <h3>댓글 작성</h3>
+  <form action="{% url 'eithers:comment_create' question.pk %}" method="POST">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+    <input type="submit" class="btn btn-warning" value="작성">
+  </form>
+  <hr>
+  <h3>댓글 목록</h3>
+  <ul class="list-group">
+    {% for comment in comments %}
+      {% if comment.pick == "RED TEAM" %}
+        <li class="list-group-item list-group-item-danger"> {{ comment.pick }} - {{ comment.content }} </li>
+      {% else %}
+        <li class="list-group-item list-group-item-primary"> {{ comment.pick }} - {{ comment.content }} </li>
+      {% endif %}
+      <hr>
+    {% endfor %}
+  </ul>
+{% endblock contents %}

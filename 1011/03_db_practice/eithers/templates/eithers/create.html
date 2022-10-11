@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+  <h1>CREATE</h1>
+  <hr>
+  <form action="{% url 'eithers:create' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="d-flex">
+      <input type="submit" class="btn btn-primary" value="Submit">
+      <a href="{% url 'eithers:index' %}" class="btn btn-warning ms-2">BACK</a>
+    </div>
+  </form>
+
+{% endblock contents %}
