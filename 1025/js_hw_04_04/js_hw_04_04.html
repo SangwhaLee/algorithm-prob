@@ -45,28 +45,50 @@
     // lodash 를 활용하여 1.jpg ~ 6.jpg 중 하나의 경로로 body의 backgroundImage url을 설정
     // hint
     const body = document.querySelector("body")
+    const chosenImage = _.random(1,6)
 
-    const images = [
-      "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"
-    ]
-
-    const chosenImage = images[Math.floor(Math.random() * images.length)]
-    const bgImage = document.createElement("img")
-    bgImage.src = `img/${chosenImage}`
+    const bgImage = `url(images/${chosenImage}.jpg)`
     
-    body.appendChild(bgImage)
+    body.style.backgroundImage = bgImage
 
     const timeDiv = document.querySelector('#time')
     const formatTime = function () {
       // 아래 now를 활용하여 timeDiv의 innerText를 적절하게 re-format
       const now = new Date()
-      if(now.getHours() > 12){
-        
+      let amPm = ""
+      let hours = ""
+      if(now.getHours() >= 12){
+        amPm = "오후"
+        hours = String(now.getHours()-12).padStart(2,"0")
       }
+      else{
+        amPm = "오전"
+        hours = String(now.getHours()).padStart(2,"0")
+      }
+      const minutes = String(now.getMinutes()).padStart(2,"0")
+      const seconds = String(now.getSeconds()).padStart(2,"0")
+      timeDiv.innerText = `${amPm} ${hours}:${minutes}:${seconds}`
     }
     
+    function startClock() {
+      const now = new Date()
+      let amPm = ""
+      let hours = ""
+      if(now.getHours() >= 12){
+        amPm = "오후"
+        hours = String(now.getHours()-12).padStart(2,"0")
+      }
+      else{
+        amPm = "오전"
+        hours = String(now.getHours()).padStart(2,"0")
+      }
+      const minutes = String(now.getMinutes()).padStart(2,"0")
+      const seconds = String(now.getSeconds()).padStart(2,"0")
+      timeDiv.innerText = `${amPm} ${hours}:${minutes}:${seconds}`
+    }
+    startClock()
     // 1초에 한번 formatTime 함수 실행
-    setInterval(fomatTime, 1000)
+    setInterval(formatTime, 1000)
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
