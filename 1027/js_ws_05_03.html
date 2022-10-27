@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>인기 영화들</h2>
+  <ul></ul>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const ul = document.querySelector("ul")
+    const API_URL = "https://api.themoviedb.org/3/movie/top_rated?api_key=469f9baab6501e0158c6f6d5bef8d9d2"
+    axios.get(API_URL)
+      .then((response) => {
+        for(let i=0;i<20;i++){
+          const li = document.createElement('li')
+          if((response.data.results[i].vote_average) >= 8){
+            li.innerText = response.data.results[i].title
+            ul.appendChild(li)
+          }
+        }
+      })
+      .catch((response) => {
+        const li = document.createElement('li')
+        li.innerText = "영화를 불러오지 못했습니다"
+        ul.appendChild(li)
+      })
+  </script>
+</body>
+</html>
