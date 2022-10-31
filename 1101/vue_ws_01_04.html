@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="lunch">
+    <h2>점심메뉴</h2>
+    <button @click="pickLunch">Pcik One</button>
+    <p>{{ todayMenu }}</p>
+  </div>
+  <hr>
+  <div id="lotto">
+    <h2>로또</h2>
+    <button @click="getNumbers">Get Lucky Numbers</button>
+    <p> {{ luckyNumbers }} </p>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <script>
+    const lunch = new Vue({
+      el:"#lunch",
+      data:{
+        todayMenu: '',
+        menus: ['국밥','김밥','라면','칼국수','카레','짜장면']
+      },
+      methods: {
+        pickLunch: function() {
+          this.todayMenu = _.sample(this.menus)
+        }
+      }
+    })
+    const lotto = new Vue({
+      el:"#lotto",
+      data:{
+        luckyNumbers:'',
+      },
+      methods: {
+        getNumbers: function() {
+          this.luckyNumbers = []
+          while(this.luckyNumbers.length < 6){
+            const num = _.random(1,45)
+            if(!(num in this.luckyNumbers)){
+              this.luckyNumbers.push(num)   
+            }
+          }
+        }
+      },
+    })
+  </script>
+</body>
+</html>
