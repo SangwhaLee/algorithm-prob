@@ -8,8 +8,8 @@
 </head>
 <body>
   <div id="app">
-    <div v-for="빈칸을 채워주세요">
-      <p> {{ nums | getEvenNums }}</p>
+    <div v-for="(num) in evenNumbers":key="arry">
+      <p>{{ num }}</p>
     </div>
   </div>
 
@@ -20,13 +20,13 @@
       data: {
         nums : [1, 2, 3, 4, 5, 6]
       },
-      filters: {
-        getEvenNums: function (nums) {
-          const evenNums = nums.filter((num) => {
-            return num%2!==0
+      computed: {
+        evenNumbers: function() {
+          const evenNums = this.nums.filter((nums) => {
+            return nums%2 !==0
           })
           return evenNums
-        },
+        }
       }
     })
   </script>

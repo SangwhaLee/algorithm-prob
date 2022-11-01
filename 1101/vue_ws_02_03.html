@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .delete-button {
+      display: block;
+      margin-top: 1rem;
+    }
+
+    input[type="checkbox"]:checked + label{
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+  <div id="todoList">
+    <h2>Todo List</h2>
+    <input v-model="message" type="text">
+    <button @click="inputTodo">+</button>
+    <ul v-for="(todo, index) in todos":key=`"todo-${index}"`>
+      <li>
+        <input @change="" id=`"todo-${index}"`  type="checkbox">
+        <label for=`"todo-${index}"`>{{ todo }}</label>
+      </li>
+    </ul>
+    <button class="delete-button" @click="deleteAll">완료 목록 삭제</button>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const toDoList = new Vue({
+      el:"#todoList",
+      data: {
+        message: '',
+        todos: [],
+      },
+      methods: {
+        inputTodo: function(event) {
+          if(this.message === ""){
+            alert("내용을 입력해주세요!")
+            return
+          }
+          this.todos.push(this.message)
+          this.message = ""
+        },
+        deleteAll: function(event) {
+          this.todos = []
+        },
+        changeStatus: function(event) {
+          const label = event.target.querySelector("label")
+          console.log(label)
+        }
+      }, 
+    })
+  </script>
+</body>
+</html>

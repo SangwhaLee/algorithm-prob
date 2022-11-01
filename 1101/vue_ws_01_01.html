@@ -10,7 +10,7 @@
   <div id="app">
     <h1>Popular Movies</h1>
     <div>
-      <li v-for="(movie) in movieinfo.results":key=arry v-if="movie.vote_average >= 8">
+      <li v-for="(movie) in movieinfo.results":key=arry v-show="movie.vote_average >= 8">
         {{ movie.title }}
       </li>
     </div>
